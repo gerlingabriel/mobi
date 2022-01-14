@@ -14,11 +14,11 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long orderId;
 
-    private String nome;
+    private String customerName;
 
     private String nomePedido;
 
-    private BigDecimal valorPedido;
+    private BigDecimal totalPrice;
 
     public Long getOrderId() {
         return orderId;
@@ -28,12 +28,12 @@ public class Pedido {
         this.orderId = orderId;
     }
 
-    public String getNome() {
-        return nome;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getNomePedido() {
@@ -44,20 +44,19 @@ public class Pedido {
         this.nomePedido = nomePedido;
     }
 
-    public BigDecimal getValorPedido() {
-        return valorPedido;
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setValorPedido(BigDecimal valorPedido) {
-        this.valorPedido = valorPedido;
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     @Override
     public String toString() {
-        return "Pedido [nome=" + nome + ", nomePedido=" + nomePedido + ", orderId=" + orderId + ", valorPedido="
-                + valorPedido + "]";
+        return "Pedido [customerName=" + customerName + ", nomePedido=" + nomePedido + ", orderId=" + orderId
+                + ", totalPrice=" + totalPrice + "]";
     }
 
-    
-    
+
 }

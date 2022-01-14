@@ -21,7 +21,7 @@ class MobiApplicationTests {
 
 		for(int x = 1; x <= 100; x++ ){
 
-			System.out.print(x + " " );
+
 			
 			if (x % 3 == 0 && x % 5 == 0) {
 				System.out.println("FizzBuzz");
@@ -30,7 +30,7 @@ class MobiApplicationTests {
 			} else if(x % 5 == 0){
 				System.out.println("Buzz");
 			} else {
-				System.out.println();
+				System.out.println(x);
 			}
 		}
 	}
@@ -41,7 +41,7 @@ class MobiApplicationTests {
 		String[] estrelas = new String[4];
 
 		estrelas[0] = "[*--]";
-		estrelas[1] = "[---]";
+		estrelas[1] = "[*--]";
 		estrelas[2] = "[**-]";
 		estrelas[3] = "[***]";
 
@@ -70,6 +70,7 @@ class MobiApplicationTests {
 		 momentoTempo[1] = "13:13";
 		 momentoTempo[2] = "10:00";
 
+		 int contaBeep = 0;
 		 for (String tempo : momentoTempo) {
 
 			System.out.print(tempo);
@@ -78,9 +79,11 @@ class MobiApplicationTests {
 				tempo.charAt(0) == tempo.charAt(1) && tempo.charAt(3) == tempo.charAt(4) ||
 				tempo.charAt(0) == tempo.charAt(4) && tempo.charAt(1) == tempo.charAt(3) ||
 				tempo.charAt(0) == tempo.charAt(1) && tempo.charAt(0) == tempo.charAt(3) && tempo.charAt(0) == tempo.charAt(4) ) {
-				System.out.println(" 2");
-			}			 
+				contaBeep++;
+			}				 
 		 }
+
+		 System.out.println(contaBeep);
 
 	}
 
@@ -99,12 +102,31 @@ class MobiApplicationTests {
 			pontosDasEquipes[x] = calcularPontosEquipes(vitoria[x], empate[x]);
 		}
 		
-		int contador = 0;
+		mostrarCampeao(pontosDasEquipes);
+
+	}
+
+	private void mostrarCampeao(int[] pontosDasEquipes) {
+		int pontosDoCampeao = 0;
+		int equipeCampea = 0;
+		int contatoEquipe = 0;
+
 		for (int pontos : pontosDasEquipes) {
-			System.out.println("Equipe " + contador +  " total pontos = " + pontos);
-			contador++;
+			
+			if (pontosDoCampeao == 0) {
+
+				pontosDoCampeao = pontos;
+				equipeCampea = contatoEquipe;
+
+			}else if(pontosDoCampeao < pontos){
+
+				pontosDoCampeao = pontos;
+				equipeCampea = contatoEquipe;
+			}
+			contatoEquipe++;
 		}
 
+		System.out.println("Equipe campeã é " +equipeCampea+ " com " +pontosDoCampeao+ " pontos");
 	}
 
 	private int calcularPontosEquipes(int vitoria, int empates) {
@@ -118,17 +140,16 @@ class MobiApplicationTests {
 	@Test
 	void test5() {
 
-		Optional<List<Pedido>> listaPedido = pedidoRepository.findByNome("DeathStar");
+		Optional<List<Pedido>> listaPedido = pedidoRepository.findByCustomerName("DeathStar");
 
+		System.out.println();
 		listaPedido.get().forEach(System.out::println);
+		System.out.println();
 
 		List<Pedido> listaPedidoDois = pedidoRepository.buscarListaPedidoPorNome("DeathStar");
 
 		System.out.println();
 		listaPedidoDois.forEach(System.out::println);
+		System.out.println();
 	}
-
-
-
-
 }

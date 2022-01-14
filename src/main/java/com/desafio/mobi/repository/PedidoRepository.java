@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 
-    Optional<List<Pedido>> findByNome(String string);
+    Optional<List<Pedido>> findByCustomerName(String string);
 
-    @Query(nativeQuery = true, value = "SELECT * FROM PEDIDO WHERE NOME = :string")
+    @Query(nativeQuery = true, value = "SELECT * FROM PEDIDO WHERE CustomerName = :string")
     List<Pedido> buscarListaPedidoPorNome(String string);
     
 }

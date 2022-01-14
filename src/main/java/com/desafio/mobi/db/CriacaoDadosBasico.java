@@ -18,29 +18,28 @@ public class CriacaoDadosBasico implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-        
+ 
         if (pedidoRepository.findAll().isEmpty()) {
 
             Pedido pedido = new Pedido();
-            pedido.setNome("DeathStar");
+            pedido.setCustomerName("DeathStar");
             pedido.setNomePedido("Exaustor");
-            pedido.setValorPedido(BigDecimal.valueOf(155.55));
+            pedido.setTotalPrice(BigDecimal.valueOf(100));
 
             Pedido pedido2 = new Pedido();
-            pedido2.setNome("DeathStar");
+            pedido2.setCustomerName("DeathStar");
             pedido2.setNomePedido("Exaustor Peq");
-            pedido2.setValorPedido(BigDecimal.valueOf(58));
+            pedido2.setTotalPrice(BigDecimal.valueOf(58));
 
             Pedido pedido3 = new Pedido();
-            pedido3.setNome("DeathStar");
+            pedido3.setCustomerName("setCustomerName");
             pedido3.setNomePedido("Exaustor Médio");
-            pedido3.setValorPedido(BigDecimal.valueOf(265.78));
+            pedido3.setTotalPrice(BigDecimal.valueOf(265.78));
 
             Pedido pedido4 = new Pedido();
-            pedido4.setNome("DeathStar");
+            pedido4.setCustomerName("DeathStar");
             pedido4.setNomePedido("Exaustor Grande");
-            pedido4.setValorPedido(BigDecimal.valueOf(1500)); 
+            pedido4.setTotalPrice(BigDecimal.valueOf(1500)); 
 
             pedidoRepository.saveAll(List.of(pedido, pedido2, pedido3, pedido4));
         }        
