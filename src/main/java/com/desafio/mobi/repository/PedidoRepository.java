@@ -14,7 +14,7 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 
     Optional<List<Pedido>> findByCustomerName(String string);
 
-    @Query(nativeQuery = true, value = "SELECT * FROM PEDIDO WHERE CustomerName = :string")
+    @Query(nativeQuery = true, value = "SELECT * FROM PEDIDO WHERE customer_name = :string")
     List<Pedido> buscarListaPedidoPorNome(String string);
     
 }
